@@ -48,7 +48,7 @@ func searchOnSlice(characters []*character.Characters, id int) (*character.Chara
 }
 
 func getAllCharacters(c *CharacterRepositoryStruct) error {
-	csvFile, err := os.Open("./sample-data/characters.csv")
+	csvFile, err := os.Open("../sample-data/characters.csv")
 	if err != nil {
 		return errors.New("5001")
 	}
@@ -61,6 +61,18 @@ func getAllCharacters(c *CharacterRepositoryStruct) error {
 		return characterSlice[i].ID <= characterSlice[j].ID
 	})
 	c.characters = characterSlice
+	return nil
+}
+
+func (c *CharacterRepositoryStruct) WriteCharactersOnCsv(characters *[]character.Characters) error {
+	csvFile, err := os.Create("sample-data/charactersWrite.csv")
+	if err != nil {
+		return errors.New("5001")
+	}
+	defer csvFile.Close()
+	if err = gocsv.MarshalFile(characters, csvFile); err != nil {
+		return errors.New("5001")
+	}
 	return nil
 }
 

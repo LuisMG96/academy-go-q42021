@@ -17,5 +17,7 @@ func New() http.Handler {
 	r := mux.NewRouter()
 	r.HandleFunc("/getAllCharacters", controllers.GetAllCharacters).Methods(http.MethodGet)
 	r.HandleFunc("/getCharacter/{id}", controllers.GetCharacterById).Methods(http.MethodGet)
+	r.HandleFunc("/writeCharacters", controllers.WriteCharactersOnCsv).Methods(http.MethodPost)
+
 	return r
 }

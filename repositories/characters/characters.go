@@ -14,4 +14,5 @@ type Characters struct {
 type CharactersRepository interface {
 	FetchCharacters() ([]*Characters, error)
 	FetchCharacterById(id int) (*Characters, error)
+	WriteCharactersOnCsv([]*Characters) error
 }
