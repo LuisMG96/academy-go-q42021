@@ -2,12 +2,15 @@ package controllers
 
 import (
 	"encoding/json"
+	"net/http"
+	"strconv"
+
 	"github.com/LuisMG96/academy-go-q42021/common"
 	"github.com/LuisMG96/academy-go-q42021/services"
 	"github.com/gorilla/mux"
-	"net/http"
-	"strconv"
 )
+
+//GetAllCharacters - Receive a response and a requeset, it's the entry point for retrieve the full list of characters
 
 func GetAllCharacters(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -23,6 +26,7 @@ func GetAllCharacters(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//GetCharacterById - Receive a response and a requeset, it's the entry point for retrieve a character by id
 func GetCharacterById(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	service := services.NewCsvService()

@@ -2,16 +2,19 @@ package inmem
 
 import (
 	"errors"
-	character "github.com/LuisMG96/academy-go-q42021/repositories/characters"
-	"github.com/gocarina/gocsv"
 	"os"
 	"sort"
+
+	character "github.com/LuisMG96/academy-go-q42021/repositories/characters"
+	"github.com/gocarina/gocsv"
 )
 
+//CharacterRepositoryStruct - Struct that implements CharacterRepository Interface it also contains a list of Characters
 type CharacterRepositoryStruct struct {
 	characters []*character.Characters
 }
 
+//FetchCharacters - implementation of FetchCharacters of CharacterRepository interface
 func (c *CharacterRepositoryStruct) FetchCharacters() ([]*character.Characters, error) {
 	err := getAllCharacters(c)
 	if err != nil {
@@ -20,6 +23,7 @@ func (c *CharacterRepositoryStruct) FetchCharacters() ([]*character.Characters, 
 	return c.characters, nil
 }
 
+//FetchCharacterById - implementation of FetchCharacterById of CharacterRepository interface
 func (c *CharacterRepositoryStruct) FetchCharacterById(id int) (*character.Characters, error) {
 	err := getAllCharacters(c)
 	if err != nil {
@@ -33,11 +37,10 @@ func (c *CharacterRepositoryStruct) FetchCharacterById(id int) (*character.Chara
 }
 
 func searchOnSlice(characters []*character.Characters, id int) (*character.Characters, error) {
-
 	idx := sort.Search(len(characters), func(i int) bool {
-		return characters[i].Id >= id
+		return characters[i].ID >= id
 	})
-	if idx < len(characters) && characters[idx].Id == id {
+	if idx < len(characters) && characters[idx].ID == id {
 		return characters[idx], nil
 	} else {
 		return nil, errors.New("5003")
@@ -55,12 +58,13 @@ func getAllCharacters(c *CharacterRepositoryStruct) error {
 	}
 	characterSlice := c.characters
 	sort.Slice(characterSlice, func(i, j int) bool {
-		return characterSlice[i].Id <= characterSlice[j].Id
+		return characterSlice[i].ID <= characterSlice[j].ID
 	})
 	c.characters = characterSlice
 	return nil
 }
 
-func NewCharacterRepository() character.CharactersRepository {
+//NewCharacterRepository constructor of CharacterRepositoryStruct
+func NewCharacterRepository() *CharacterRepositoryStruct {
 	return &CharacterRepositoryStruct{}
 }

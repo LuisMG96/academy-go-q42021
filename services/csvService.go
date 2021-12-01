@@ -7,19 +7,23 @@ import (
 
 const csvToReadPath string = "./csvToRead.csv"
 
+//Csv - Interface needs to methods GetAllCharacters and GetCharacterById
 type Csv interface {
 	GetAllCharacters() ([]*character.Characters, error)
 	GetCharacterById(id int) (*character.Characters, error)
 }
 
+//CsvService - Struct who will containt two method implementation of Csv interface
 type CsvService struct {
 }
 
-func NewCsvService() Csv {
+//NewCsvService - Returns a CsvService
+func NewCsvService() *CsvService {
 	csvService := &CsvService{}
 	return csvService
 }
 
+//GetAllCharacters - Implementation of GetAllCharacters of interface Csv, use the Character Repository to get a lis of characters
 func (csvService *CsvService) GetAllCharacters() ([]*character.Characters, error) {
 	characterRepo := inmem.NewCharacterRepository()
 	data, errorRe := characterRepo.FetchCharacters()
@@ -30,6 +34,7 @@ func (csvService *CsvService) GetAllCharacters() ([]*character.Characters, error
 	}
 }
 
+//GetCharacterById - Implementation of GetCharacterById of interface Csv, use the Character Repository to get a specific Character by Id
 func (csvService *CsvService) GetCharacterById(id int) (*character.Characters, error) {
 	characterRepo := inmem.NewCharacterRepository()
 	data, errorRe := characterRepo.FetchCharacterById(id)
