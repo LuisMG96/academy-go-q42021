@@ -3,9 +3,12 @@ package services
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 
+	"github.com/LuisMG96/academy-go-q42021/common"
 	character "github.com/LuisMG96/academy-go-q42021/repositories/characters"
 	"github.com/LuisMG96/academy-go-q42021/repositories/inmem"
 )
@@ -18,6 +21,7 @@ type Csv interface {
 	GetAllCharacters() ([]*character.Characters, error)
 	GetCharacterById(id int) (*character.Characters, error)
 	WriteCharactersOnCSV() error
+	GetAllConcurrently() ([]*character.Characters, error)
 }
 
 //CsvService - Struct who will containt two method implementation of Csv interface
@@ -32,8 +36,11 @@ func NewCsvService() *CsvService {
 
 //GetAllCharacters - Implementation of GetAllCharacters of interface Csv, use the Character Repository to get a lis of characters
 func (csvService *CsvService) GetAllCharacters() ([]*character.Characters, error) {
+	ts := time.Now()
 	characterRepo := inmem.NewCharacterRepository()
 	data, errorRe := characterRepo.FetchCharacters()
+	te := time.Now().Sub(ts)
+	fmt.Println("\nEND Basic: ", te)
 	if errorRe != nil {
 		return nil, errorRe
 	} else {
@@ -45,6 +52,22 @@ func (csvService *CsvService) GetAllCharacters() ([]*character.Characters, error
 func (csvService *CsvService) GetCharacterById(id int) (*character.Characters, error) {
 	characterRepo := inmem.NewCharacterRepository()
 	data, errorRe := characterRepo.FetchCharacterById(id)
+	if errorRe != nil {
+		return nil, errorRe
+	} else {
+		return data, nil
+	}
+}
+
+//GetCharacterById - Implementation of GetCharacterById of interface Csv, use the Character Repository to get a specific Character by Id
+func (csvService *CsvService) GetAllConcurrently(filter *common.Filter) ([]*character.Characters, error) {
+
+	ts := time.Now()
+	//basicRead(f)
+	characterRepo := inmem.NewCharacterRepository()
+	data, errorRe := characterRepo.ReadWithWorkerPool(filter)
+	te := time.Now().Sub(ts)
+	fmt.Println("\nEND Basic: ", te)
 	if errorRe != nil {
 		return nil, errorRe
 	} else {
