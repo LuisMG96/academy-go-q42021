@@ -8,12 +8,13 @@ type errorResponse struct {
 }
 
 //New - Constructor of errorResponse Struct who receives an error, parse it and returns it as an errorResponse
-func New(err error) errorResponse {
+func NewError(err error) errorResponse {
 	status, message := getStatusErrorCode(err)
 	return errorResponse{
 		Status:  status,
 		Message: message,
 	}
+
 }
 
 func getStatusErrorCode(err error) (int, string) {
@@ -28,6 +29,8 @@ func getStatusErrorCode(err error) (int, string) {
 		return http.StatusInternalServerError, "Malformed File"
 	case "5003":
 		return http.StatusNotFound, "Character not found"
+	case "5004":
+		return http.StatusBadGateway, "Character not found"
 	case "403":
 		return http.StatusForbidden, "Forbidden"
 	default:
