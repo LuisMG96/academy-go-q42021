@@ -1,0 +1,225 @@
+INFO: 2021/12/06 13:42:07 main.go:16: Starting the application
+INFO: 2021/12/06 13:46:55 main.go:16: Starting the application
+INFO: 2021/12/06 13:47:01 csvController.go:58: CsvController | WriteCharactersOnCsv request
+INFO: 2021/12/06 13:47:02 csvController.go:68: CsvController | WriteCharactersOnCsv Success
+INFO: 2021/12/06 13:47:05 csvController.go:34: CsvController | GetCharacterById request
+INFO: 2021/12/06 13:47:05 csvController.go:52: CsvController | GetCharacterById Success
+INFO: 2021/12/06 13:47:06 csvController.go:16: CsvController | GetAllCharacters request
+INFO: 2021/12/06 13:47:06 csvController.go:27: CsvController | GetAllCharacters Success
+INFO: 2021/12/06 13:47:09 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:47:09 csvController.go:99: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/06 13:47:37 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:48:40 main.go:16: Starting the application
+INFO: 2021/12/06 13:48:48 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:51:45 main.go:16: Starting the application
+INFO: 2021/12/06 13:51:48 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:53:11 main.go:16: Starting the application
+INFO: 2021/12/06 13:53:19 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:54:17 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:54:19 csvController.go:99: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/06 13:54:45 main.go:16: Starting the application
+INFO: 2021/12/06 13:54:49 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:55:16 csvController.go:99: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/06 13:55:29 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:56:57 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 13:59:01 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:00:06 main.go:16: Starting the application
+INFO: 2021/12/06 14:00:17 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:01:28 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:01:59 main.go:16: Starting the application
+INFO: 2021/12/06 14:02:01 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:03:01 main.go:16: Starting the application
+INFO: 2021/12/06 14:03:06 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:07:57 main.go:16: Starting the application
+INFO: 2021/12/06 14:08:03 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:10:42 main.go:16: Starting the application
+INFO: 2021/12/06 14:10:51 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:11:40 main.go:16: Starting the application
+INFO: 2021/12/06 14:11:45 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:13:24 main.go:16: Starting the application
+INFO: 2021/12/06 14:13:27 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:13:42 main.go:16: Starting the application
+INFO: 2021/12/06 14:13:46 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:14:58 main.go:16: Starting the application
+INFO: 2021/12/06 14:15:03 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:15:18 main.go:16: Starting the application
+INFO: 2021/12/06 14:15:44 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 14:16:01 main.go:16: Starting the application
+INFO: 2021/12/06 14:16:11 main.go:16: Starting the application
+INFO: 2021/12/06 14:16:27 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 15:56:51 main.go:16: Starting the application
+INFO: 2021/12/06 15:56:56 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 15:57:44 main.go:16: Starting the application
+INFO: 2021/12/06 15:57:47 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 15:58:06 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 15:58:16 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 15:58:16 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/06 15:59:11 main.go:16: Starting the application
+INFO: 2021/12/06 15:59:17 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 15:59:17 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/06 15:59:24 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:03:32 main.go:16: Starting the application
+INFO: 2021/12/06 16:03:35 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:06:19 main.go:16: Starting the application
+INFO: 2021/12/06 16:06:23 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:07:14 main.go:16: Starting the application
+INFO: 2021/12/06 16:07:19 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:08:21 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:08:48 main.go:16: Starting the application
+INFO: 2021/12/06 16:08:50 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:13:06 main.go:16: Starting the application
+INFO: 2021/12/06 16:13:10 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:13:28 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:17:06 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:25:11 main.go:16: Starting the application
+INFO: 2021/12/06 16:26:07 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:36:10 main.go:16: Starting the application
+INFO: 2021/12/06 16:36:16 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:37:06 main.go:16: Starting the application
+INFO: 2021/12/06 16:37:09 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:42:07 main.go:16: Starting the application
+INFO: 2021/12/06 16:42:13 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:42:20 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:46:26 main.go:16: Starting the application
+INFO: 2021/12/06 16:46:35 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:49:49 main.go:16: Starting the application
+INFO: 2021/12/06 16:49:56 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:50:03 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/06 16:52:57 main.go:16: Starting the application
+INFO: 2021/12/06 16:53:04 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 13:57:22 main.go:16: Starting the application
+INFO: 2021/12/07 13:57:57 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 13:57:57 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:02:17 main.go:16: Starting the application
+INFO: 2021/12/07 14:02:20 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:02:20 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:02:55 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:02:55 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:03:07 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:03:07 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:04:45 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:04:45 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:04:54 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:04:54 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:04:56 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:04:56 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:09:46 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+ERROR: 2021/12/07 14:09:46 csvController.go:83: CsvController | GetAllCharactersConcurrently Error
+INFO: 2021/12/07 14:09:54 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:09:54 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:10:01 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:10:01 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:10:20 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:10:20 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:11:29 main.go:16: Starting the application
+INFO: 2021/12/07 14:11:33 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:11:53 main.go:16: Starting the application
+INFO: 2021/12/07 14:11:57 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:11:57 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:14:49 main.go:16: Starting the application
+INFO: 2021/12/07 14:14:55 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:14:55 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:15:05 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:15:05 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:15:09 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/07 14:15:09 csvController.go:98: CsvController | GetAllCharactersConcurrently Success
+INFO: 2021/12/07 14:15:11 csvController.go:77: CsvController | GetAllCharactersConcurrently request
+ERROR: 2021/12/07 14:15:11 csvController.go:83: CsvController | GetAllCharactersConcurrently Error
+INFO: 2021/12/07 16:16:03 main.go:16: Starting the application
+INFO: 2021/12/07 16:16:27 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:16:28 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:16:59 main.go:16: Starting the application
+INFO: 2021/12/07 16:17:03 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:17:04 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:17:31 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:17:31 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:19:34 main.go:16: Starting the application
+INFO: 2021/12/07 16:19:38 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:19:39 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:19:57 main.go:16: Starting the application
+INFO: 2021/12/07 16:20:03 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:20:04 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:22:36 main.go:16: Starting the application
+INFO: 2021/12/07 16:22:38 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:22:39 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:28:29 main.go:16: Starting the application
+INFO: 2021/12/07 16:28:33 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:28:34 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:30:31 main.go:16: Starting the application
+INFO: 2021/12/07 16:30:38 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:30:38 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:30:57 main.go:16: Starting the application
+INFO: 2021/12/07 16:31:01 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:31:02 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:31:47 main.go:16: Starting the application
+INFO: 2021/12/07 16:32:00 main.go:16: Starting the application
+INFO: 2021/12/07 16:32:03 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:32:04 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:32:26 main.go:16: Starting the application
+INFO: 2021/12/07 16:32:31 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:32:32 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:41:20 main.go:16: Starting the application
+INFO: 2021/12/07 16:41:24 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:41:25 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:42:42 main.go:16: Starting the application
+INFO: 2021/12/07 16:42:50 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:42:50 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:46:52 main.go:16: Starting the application
+INFO: 2021/12/07 16:46:59 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:47:00 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:48:16 main.go:16: Starting the application
+INFO: 2021/12/07 16:48:20 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:48:21 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:57:51 main.go:16: Starting the application
+INFO: 2021/12/07 16:57:56 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:57:57 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:58:33 main.go:16: Starting the application
+INFO: 2021/12/07 16:58:40 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:58:40 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 16:58:56 main.go:16: Starting the application
+INFO: 2021/12/07 16:59:10 main.go:16: Starting the application
+INFO: 2021/12/07 16:59:12 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 16:59:13 authController.go:23: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 17:06:10 main.go:16: Starting the application
+INFO: 2021/12/07 17:06:41 main.go:16: Starting the application
+INFO: 2021/12/07 17:06:45 authController.go:12: AuthController | GetToken request
+ERROR: 2021/12/07 17:06:45 authController.go:18: AuthController | GetToken Error
+INFO: 2021/12/07 17:07:06 main.go:16: Starting the application
+INFO: 2021/12/07 17:07:08 authController.go:12: AuthController | GetToken request
+ERROR: 2021/12/07 17:07:09 authController.go:18: AuthController | GetToken Error
+INFO: 2021/12/07 17:07:33 main.go:16: Starting the application
+INFO: 2021/12/07 17:07:40 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 17:09:43 main.go:16: Starting the application
+INFO: 2021/12/07 17:09:50 main.go:16: Starting the application
+INFO: 2021/12/07 17:09:54 authController.go:12: AuthController | GetToken request
+ERROR: 2021/12/07 17:09:55 authController.go:18: AuthController | GetToken Error
+INFO: 2021/12/07 17:10:04 main.go:16: Starting the application
+INFO: 2021/12/07 17:10:11 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 17:11:31 main.go:16: Starting the application
+INFO: 2021/12/07 17:11:35 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 17:11:36 authController.go:23: AuthController | GetToken Success
+INFO: 2021/12/07 17:13:59 main.go:16: Starting the application
+INFO: 2021/12/07 17:14:04 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 17:14:04 authController.go:23: AuthController | GetToken Success
+INFO: 2021/12/07 17:45:30 main.go:16: Starting the application
+INFO: 2021/12/07 17:46:00 main.go:16: Starting the application
+INFO: 2021/12/07 17:46:47 main.go:16: Starting the application
+INFO: 2021/12/07 17:47:39 main.go:16: Starting the application
+INFO: 2021/12/07 17:47:57 main.go:16: Starting the application
+INFO: 2021/12/07 17:48:13 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/07 17:48:13 authController.go:23: AuthController | GetToken Success
+INFO: 2021/12/07 17:48:25 csvController.go:24: CsvController | GetAllCharacters request
+INFO: 2021/12/07 17:48:25 csvController.go:34: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 17:48:31 csvController.go:24: CsvController | GetAllCharacters request
+INFO: 2021/12/07 17:48:31 csvController.go:34: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 17:48:41 csvController.go:24: CsvController | GetAllCharacters request
+INFO: 2021/12/07 17:48:41 csvController.go:34: CsvController | GetAllCharacters Success
+INFO: 2021/12/07 20:10:44 main.go:16: Starting the application
+INFO: 2021/12/07 20:10:49 csvController.go:16: CsvController | GetAllCharacters request
+INFO: 2021/12/07 20:10:55 csvController.go:115: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/08 23:03:59 main.go:16: Starting the application
+INFO: 2021/12/08 23:04:07 csvController.go:115: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/08 23:04:11 authController.go:12: AuthController | GetToken request
+INFO: 2021/12/08 23:04:12 authController.go:23: AuthController | GetToken Success
+INFO: 2021/12/08 23:04:27 csvController.go:115: CsvController | GetAllCharactersConcurrently request
+INFO: 2021/12/08 23:04:27 csvController.go:142: CsvController | GetAllCharactersConcurrently Success
