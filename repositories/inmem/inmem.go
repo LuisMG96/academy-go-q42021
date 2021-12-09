@@ -16,6 +16,10 @@ import (
 	"github.com/gocarina/gocsv"
 )
 
+const odd = "odd"
+const charactesCsvFile = "./sample-data/characters.csv"
+const charactesCsvFileWrite = "./sample-data/charactersWrite.csv"
+
 //CharacterRepositoryStruct - Struct that implements CharacterRepository Interface it also contains a list of Characters
 type CharacterRepositoryStruct struct {
 	characters []*character.Characters
@@ -55,7 +59,7 @@ func searchOnSlice(characters []*character.Characters, id int) (*character.Chara
 }
 
 func getAllCharacters(c *CharacterRepositoryStruct) error {
-	csvFile, err := os.Open("./sample-data/characters.csv")
+	csvFile, err := os.Open(charactesCsvFile)
 	if err != nil {
 		return errors.New("5001")
 	}
@@ -71,8 +75,9 @@ func getAllCharacters(c *CharacterRepositoryStruct) error {
 	return nil
 }
 
+//WriteCharactersOnCsv - Function thar receive a slice of characters and write it on a CSV file
 func (c *CharacterRepositoryStruct) WriteCharactersOnCsv(characters *[]character.Characters) error {
-	csvFile, err := os.Create("../../sample-data/charactersWrite.csv")
+	csvFile, err := os.Create(charactesCsvFileWrite)
 	if err != nil {
 		return errors.New("5001")
 	}
@@ -84,83 +89,130 @@ func (c *CharacterRepositoryStruct) WriteCharactersOnCsv(characters *[]character
 }
 
 func (c *CharacterRepositoryStruct) ReadWithWorkerPool(filter *common.Filter) ([]*character.Characters, error) {
-	csvFile, err := os.Open("./sample-data/characters.csv")
+	var numWps float64
+	csvFile, err := os.Open(charactesCsvFile)
 	if err != nil {
-		panic("asd")
+		return nil, errors.New("500")
 	}
 
 	fcsv := csv.NewReader(csvFile)
 	rs := make([]*character.Characters, 0)
-	numWps := math.Floor(float64(filter.Items / filter.ItemsPerWorker))
-	jobs := make(chan []string)
-	var res chan *character.Characters
-	if filter.Items != -1 && filter.Items != 0 {
-		res = make(chan *character.Characters, filter.Items)
+	if filter.Items == -1 {
+		numWps = 100
 	} else {
-		res = make(chan *character.Characters)
-
-	}
-	var wg sync.WaitGroup
-	worker := func(jobs <-chan []string, results chan<- *character.Characters, id int, numOfItems int64) {
-		for i := 0; i < int(numOfItems); i++ {
-			select {
-			case job, ok := <-jobs:
-				if !ok {
-					return
-				}
-				newCharacter := parseStruct(job)
-				if filter.TypeFilter != "" {
-					if filter.TypeFilter == "odd" {
-						if odd := newCharacter.ID % 2; odd == 0 {
-							results <- newCharacter
-						}
-					} else {
-						if even := newCharacter.ID % 2; even != 0 {
-							results <- newCharacter
-						}
-					}
-				} else {
-					results <- parseStruct(job)
-				}
-			}
+		if filter.Items < filter.ItemsPerWorker {
+			numWps = 1
+		} else {
+			numWps = math.Floor(float64(filter.Items / filter.ItemsPerWorker))
 		}
 	}
+	jobs := make(chan []string)
+	res := createChanCharactes(filter)
+	var wg sync.WaitGroup
 
 	// init workers
 	for w := 0; w < int(numWps); w++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			worker(jobs, res, w, filter.ItemsPerWorker)
+			workersReadCsvfunc(jobs, res, filter)
 		}()
 	}
 
-	go func() {
+	go readFileConcurrently(fcsv, jobs)
+	go waitAndClose(&wg, res)
+	rs = addToRes(res, rs)
+	fmt.Println("Longitud de res", len(rs))
+	return rs, nil
+}
+func createChanCharactes(filter *common.Filter) chan *character.Characters {
+	if filter.Items != -1 && filter.Items != 0 {
+		return make(chan *character.Characters, int(filter.Items))
+	} else {
+		return make(chan *character.Characters)
+	}
+}
+func workersReadCsvfunc(jobs <-chan []string, results chan<- *character.Characters, filter *common.Filter) {
+	var numItem int
+	if filter.Items < filter.ItemsPerWorker {
+		numItem = int(filter.Items)
+	} else {
+		numItem = int(filter.ItemsPerWorker)
+	}
+	if filter.Items == -1 {
 		for {
-			rStr, err := fcsv.Read()
-			if err == io.EOF {
-				break
+			job, ok := <-jobs
+			if !ok {
+				return
 			}
-			if err != nil {
-				fmt.Println("ERROR: ", err.Error())
-				break
+			newCharacter := parseStruct(job)
+			if filter.TypeFilter != "" {
+				if filter.TypeFilter == odd {
+					if odd := newCharacter.ID % 2; odd != 0 {
+						results <- newCharacter
+					}
+				} else {
+					if even := newCharacter.ID % 2; even == 0 {
+						results <- newCharacter
+					}
+				}
+			} else {
+				results <- newCharacter
 			}
-			jobs <- rStr
 		}
-		close(jobs)
-	}()
+	} else {
+		for i := 0; i < numItem; i++ {
+			job, ok := <-jobs
+			if !ok {
+				return
+			}
+			newCharacter := parseStruct(job)
+			if filter.TypeFilter != "" {
+				if filter.TypeFilter == odd {
+					if odd := newCharacter.ID % 2; odd != 0 {
+						results <- newCharacter
+					} else {
+						numItem++
+					}
+				} else {
+					if even := newCharacter.ID % 2; even == 0 {
+						results <- newCharacter
+					} else {
+						numItem++
+					}
+				}
+			} else {
+				results <- newCharacter
+			}
+		}
+	}
+}
 
-	go func() {
-		wg.Wait()
-		close(res)
-	}()
+func readFileConcurrently(fcsv *csv.Reader, jobs chan []string) {
+	for {
+		rStr, err := fcsv.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			fmt.Println("ERROR: ", err.Error())
+			break
+		}
+		jobs <- rStr
+	}
+	defer close(jobs)
+}
 
+func waitAndClose(group *sync.WaitGroup, res chan *character.Characters) {
+	group.Wait()
+	close(res)
+}
+
+func addToRes(res chan *character.Characters, rs []*character.Characters) []*character.Characters {
 	for r := range res {
 		rs = append(rs, r)
 	}
-
-	fmt.Println("Count Concu ", len(rs))
-	return rs, nil
+	return rs
 }
 
 func parseStruct(data []string) *character.Characters {

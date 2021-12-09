@@ -13,77 +13,140 @@ import (
 
 //GetAllCharacters - Receive a response and a requeset, it's the entry point for retrieve the full list of characters
 func GetAllCharacters(w http.ResponseWriter, r *http.Request) {
+	common.InfoLogger.Println("CsvController | GetAllCharacters request")
 	w.Header().Set("Content-Type", "application/json")
-	service := services.CsvService{}
-	//_, data, err := service.ReadFromCSV()
-	data, err := service.GetAllCharacters()
+	authService := services.NewAuthService()
+	token, err := authService.ExtractTokenFromRequest(r)
 	if err != nil {
 		errorResponse := common.NewError(err)
 		w.WriteHeader(int(errorResponse.Status))
 		json.NewEncoder(w).Encode(errorResponse)
+	} else if isValid, err := authService.ValidateToken(token); isValid {
+		service := services.CsvService{}
+		//_, data, err := service.ReadFromCSV()
+		data, err := service.GetAllCharacters()
+		if err != nil {
+			common.ErrorLogger.Println("CsvController | GetAllCharacters Error")
+			errorResponse := common.NewError(err)
+			w.WriteHeader(int(errorResponse.Status))
+			json.NewEncoder(w).Encode(errorResponse)
+		} else {
+			common.InfoLogger.Println("CsvController | GetAllCharacters Success")
+			json.NewEncoder(w).Encode(data)
+		}
 	} else {
-		json.NewEncoder(w).Encode(data)
+		errorResponse := common.NewError(err)
+		w.WriteHeader(int(errorResponse.Status))
+		json.NewEncoder(w).Encode(errorResponse)
 	}
+
 }
 
 //GetCharacterById - Receive a response and a requeset, it's the entry point for retrieve a character by id
 func GetCharacterById(w http.ResponseWriter, r *http.Request) {
+	common.InfoLogger.Println("CsvController | GetCharacterById request")
 	w.Header().Set("Content-Type", "application/json")
-	service := services.NewCsvService()
-	vars := mux.Vars(r)
-	id, err := strconv.Atoi(vars["id"])
+	authService := services.NewAuthService()
+	token, err := authService.ExtractTokenFromRequest(r)
 	if err != nil {
 		errorResponse := common.NewError(err)
 		w.WriteHeader(int(errorResponse.Status))
 		json.NewEncoder(w).Encode(errorResponse)
-	}
-	data, err := service.GetCharacterById(id)
-	if err != nil {
-		errorResponse := common.NewError(err)
-		w.WriteHeader(errorResponse.Status)
-		json.NewEncoder(w).Encode(errorResponse)
+	} else if isValid, err := authService.ValidateToken(token); isValid {
+		service := services.NewCsvService()
+		vars := mux.Vars(r)
+		id, err := strconv.Atoi(vars["id"])
+		if err != nil {
+			common.ErrorLogger.Println("CsvController | GetCharacterById Error")
+			errorResponse := common.NewError(err)
+			w.WriteHeader(int(errorResponse.Status))
+			json.NewEncoder(w).Encode(errorResponse)
+		}
+		data, err := service.GetCharacterById(id)
+		if err != nil {
+			common.ErrorLogger.Println("CsvController | GetCharacterById Error")
+			errorResponse := common.NewError(err)
+			w.WriteHeader(errorResponse.Status)
+			json.NewEncoder(w).Encode(errorResponse)
+		} else {
+			common.InfoLogger.Println("CsvController | GetCharacterById Success")
+			json.NewEncoder(w).Encode(data)
+		}
 	} else {
-		json.NewEncoder(w).Encode(data)
+		errorResponse := common.NewError(err)
+		w.WriteHeader(int(errorResponse.Status))
+		json.NewEncoder(w).Encode(errorResponse)
 	}
 }
 
 func WriteCharactersOnCsv(w http.ResponseWriter, r *http.Request) {
+	common.InfoLogger.Println("CsvController | WriteCharactersOnCsv request")
 	w.Header().Set("Content-Type", "application/json")
-	service := services.NewCsvService()
-	err := service.WriteCharactersOnCSV()
+	authService := services.NewAuthService()
+	token, err := authService.ExtractTokenFromRequest(r)
 	if err != nil {
 		errorResponse := common.NewError(err)
-		w.WriteHeader(errorResponse.Status)
+		w.WriteHeader(int(errorResponse.Status))
 		json.NewEncoder(w).Encode(errorResponse)
+	} else if isValid, err := authService.ValidateToken(token); isValid {
+		service := services.NewCsvService()
+		err := service.WriteCharactersOnCSV()
+		if err != nil {
+			common.ErrorLogger.Println("CsvController | WriteCharactersOnCsv Error")
+			errorResponse := common.NewError(err)
+			w.WriteHeader(errorResponse.Status)
+			json.NewEncoder(w).Encode(errorResponse)
+		} else {
+			common.InfoLogger.Println("CsvController | WriteCharactersOnCsv Success")
+			response := common.NewResponse(http.StatusCreated, "Success")
+			w.WriteHeader(response.Status)
+			json.NewEncoder(w).Encode(response)
+		}
 	} else {
-		response := common.NewResponse(http.StatusCreated, "Success")
-		w.WriteHeader(response.Status)
-		json.NewEncoder(w).Encode(response)
+		errorResponse := common.NewError(err)
+		w.WriteHeader(int(errorResponse.Status))
+		json.NewEncoder(w).Encode(errorResponse)
 	}
+
 }
 
 //GetAllCharactersConcurrently - Receive a response and a requeset, it's the entry point for retrieve the full list of characters
 func GetAllCharactersConcurrently(w http.ResponseWriter, r *http.Request) {
+	common.InfoLogger.Println("CsvController | GetAllCharactersConcurrently request")
 	w.Header().Set("Content-Type", "application/json")
-	service := services.CsvService{}
-	filters, err := getQueryParams(r)
+	authService := services.NewAuthService()
+	token, err := authService.ExtractTokenFromRequest(r)
 	if err != nil {
 		errorResponse := common.NewError(err)
 		w.WriteHeader(int(errorResponse.Status))
 		json.NewEncoder(w).Encode(errorResponse)
-		return
-	}
+	} else if isValid, err := authService.ValidateToken(token); isValid {
+		service := services.CsvService{}
+		filters, err := getQueryParams(r)
+		if err != nil {
+			common.ErrorLogger.Println("CsvController | GetAllCharactersConcurrently Error")
+			errorResponse := common.NewError(err)
+			w.WriteHeader(int(errorResponse.Status))
+			json.NewEncoder(w).Encode(errorResponse)
+			return
+		}
 
-	//_, data, err := service.ReadFromCSV()
-	data, err := service.GetAllConcurrently(filters)
-	if err != nil {
+		data, err := service.GetAllConcurrently(filters)
+		if err != nil {
+			common.ErrorLogger.Println("CsvController | GetAllCharactersConcurrently Error")
+			errorResponse := common.NewError(err)
+			w.WriteHeader(int(errorResponse.Status))
+			json.NewEncoder(w).Encode(errorResponse)
+			return
+		} else {
+			common.InfoLogger.Println("CsvController | GetAllCharactersConcurrently Success")
+			json.NewEncoder(w).Encode(data)
+			return
+		}
+	} else {
 		errorResponse := common.NewError(err)
 		w.WriteHeader(int(errorResponse.Status))
 		json.NewEncoder(w).Encode(errorResponse)
-		return
-	} else {
-		json.NewEncoder(w).Encode(data)
-		return
 	}
 }
 

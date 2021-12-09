@@ -19,6 +19,6 @@ func New() http.Handler {
 	r.HandleFunc("/getCharacter/{id}", controllers.GetCharacterById).Methods(http.MethodGet)
 	r.HandleFunc("/writeCharacters", controllers.WriteCharactersOnCsv).Methods(http.MethodPost)
 	r.HandleFunc("/getAllConcurrently", controllers.GetAllCharactersConcurrently).Methods(http.MethodGet)
-
+	r.HandleFunc("/getToken", controllers.GetToken).Methods(http.MethodGet)
 	return r
 }

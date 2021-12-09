@@ -33,6 +33,8 @@ func getStatusErrorCode(err error) (int, string) {
 		return http.StatusBadGateway, "Character not found"
 	case "403":
 		return http.StatusForbidden, "Forbidden"
+	case "401":
+		return http.StatusUnauthorized, "Forbidden"
 	default:
 		return http.StatusInternalServerError, "Internal Server Error"
 	}
